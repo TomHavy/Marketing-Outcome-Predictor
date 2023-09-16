@@ -9,7 +9,7 @@ The **Deposit Subscription Predictor** is a data science and machine learning pr
 ### 📊 Key Project Components
 
 - **Jupyter Notebook**: Dive deep into our data analysis and model development process. This notebook provides valuable insights for data scientists and enthusiasts interested in the project's intricacies.
-![gif_demo_notebook]("gifs\gif_demo_notebook_Deposit_Subscription_Predictor.gif")
+![gif_demo_notebook]("gifs/gif_demo_notebook_Deposit_Subscription_Predictor.gif")
 
 - **Interactive Streamlit App**: Experience the power of our predictive model through an interactive web application. This user-friendly tool offers real-time predictions and serves as a prototype for potential integration into the bank's marketing operations.
 ![gif_demo_app]("gifs\gif_demo_app_Deposit_Subscription_Predictor.gif")
