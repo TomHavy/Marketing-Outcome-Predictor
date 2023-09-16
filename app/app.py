@@ -1,11 +1,26 @@
 import streamlit as st
 
-from RandomForest import rf_param_selector
-from DecisionTree import dt_param_selector
-from XGBoost import xgb_param_selector
-from LogReg import lr_param_selector
-
-from functions import *
+from core.models import(
+    rf_param_selector,
+    dt_param_selector,
+    xgb_param_selector,
+    lr_param_selector
+)
+from core.functions import(
+    load_datas,
+    find_numerical_categorical_cols,
+    model_report,
+    create_model,
+    scaling,
+    split_dataset,
+    seperate_X_y,
+    
+    distribution_plot,
+    scatter_features,
+    donut,
+    time_series,
+    
+)
 
 st.set_page_config(page_title="Sopra Steria Project", layout="wide")
 
