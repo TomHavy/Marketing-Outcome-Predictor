@@ -22,7 +22,7 @@ from core.functions import(
     seperate_X_y,    
 )
 
-st.set_page_config(page_title="Sopra Steria Project", layout="wide")
+st.set_page_config(page_title="Deposit Subscription Predictor", layout="wide", page_icon='🤖')
 
 st.markdown(""" <style>
 #MainMenu {visibility: hidden;}
@@ -31,97 +31,89 @@ footer {visibility: hidden;}
 
 RANDOM_SEED = 1
 
-st.title("**Interface projet Sopra Steria** ")
+st.title("**Deposit Subscription Predictor** ")
 
-st.subheader("**Sujet**")
+st.header("**🚀 Project Overview**")
 st.write("""
 
-Mettre en évidence, à partir de ces données, une problématique Data Science d’intérêt de votre choix, présentant une valeur métier, et de la traiter.
-
+The Deposit Subscription Predictor is a data science and machine learning project that offers a comprehensive solution to a significant challenge faced by a major financial institution. It centers around a dataset derived from direct marketing campaigns, specifically telephone-based outreach, conducted by the bank to promote a "term deposit" product. Term deposits are financial instruments that can only be withdrawn upon reaching a specified term or maturity date, offering typically higher interest rates compared to regular demand deposits.
  """)
 
-st.subheader("**Description des données**")
+st.header("**💻 Data Overview**")
 
 st.write("""
 
-Le dossier data/ contient deux fichiers : data.csv et socio_demo.csv. Les données sont tirées
-de campagnes de marketing direct (démarchage téléphonique) d'une grande institution
-bancaire, relatives à un produit de « dépôt à terme ». Un dépôt à terme est un dépôt
-bancaire qui ne peut être retiré qu'à l'échéance d'un certain terme ou d'une certaine
-période, en contrepartie d’un taux d’intérêt généralement plus élevé que pour un dépôt
-classique (à vue).
-
+The data/ folder contains two files: data.csv and socio_demo.csv. The data are taken from
+from the direct marketing campaigns (telephone canvassing) of a major banking
+for a "term deposit" product. A term deposit is a bank deposit
+which can only be withdrawn at the end of a certain term or period, in return for a
+period, in return for an interest rate that is generally higher than that of a conventional (sight) deposit.
+(sight) deposit.
+         
  """)
 
-st.header("**Importation des données** 💻")
 
-with st.expander("Description des données:", expanded=False):
+dataset = load_datas(path="..\data\data_cleaned.csv", encoding="UTF-8")
+st.write(dataset)
+
+with st.expander("Column Description (english):", expanded=False):
      st.write("""
 
-- **DATE** (datetime) : Date du dernier contact 
-- **AGE** (int): Âge du client en années
-- **JOB** (string): Type de métier du client 
-- **RELATION** (string): Statut marital du client 
-- **EDUCATION** (string): Niveau d’éducation correspondant au diplôme le plus avancé obtenu par le client
-- **DEFAUT**  (int): Indique si le client a déjà fait défaut par le passé 
-- **BALANCE** (float): Solde du client 
-- **PRET_IMMO** (string): Indique si le client a un prêt immobilier
-- **PRET_PERSO** (string): Indique si le client a un prêt à la consommation
-- **CONTACT** (string): Moyen de contact avec le client 
-- **DUREE_CONTACT** (int): Durée du dernier échange avec le client en secondes
-- **NB_CONTACT** (int): Nombre de contacts effectués avec le client durant cette campagne (y compris le dernier contact)
-- **NB_J_DERNIER_CONTACT** (int): Nombre de jours écoulés après que le client a été contacté pour la dernière fois lors d’une campagne précédente (-1 si le client n’a jamais été contacté auparavant)
-- **NB_CONTACT_DERNIERE_CAMPAGNE** (int): Nombre de contacts effectués avec ce client lors de la dernière campagne 
-- **RESULTAT_DERNIERE_CAMPAGNE** (string): Résultat de la précédente campagne marketing 
-- **STATUT** (string): Statut dans la campagne actuelle. 
-                Souscrit : produit souscrit par le client
-                Refus : produit refusé par le client
-                En attente : en attente d’un retour ou d’une action du client
-                Absent : le client n'a pas décroché après des sollicitations multiples pour cette campagne
+- **DATE** (datetime) : Date of last contact 
+- **AGE** (int): Customer's age in years
+- **JOB** (string): Customer's job type 
+- **RELATIONSHIP** (string): Customer's marital status 
+- **EDUCATION** (string): Level of education corresponding to the most advanced diploma obtained by the customer.
+- **DEFAULT** (int): Indicates whether the customer has defaulted in the past. 
+- **BALANCE** (float): Customer's balance 
+- **PRET_IMMO** (string): Indicates whether the customer has a mortgage.
+- **PRET_PERSO** (string): Indicates whether the customer has a consumer loan.
+- **CONTACT** (string): Means of contacting the customer 
+- **DUREE_CONTACT** (int): Duration of last exchange with customer in seconds
+- **NB_CONTACT** (int): Number of contacts made with the customer during this campaign (including the last contact).
+- **NB_LAST_CONTACT** (int): Number of days since the customer was last contacted in a previous campaign (-1 if the customer has never been contacted before).
+- **NB_CONTACT_LAST_CAMPAGNE** (int): Number of contacts made with this customer during the last campaign. 
+- **RESULT_LAST_CAMPAGNE** (string): Result of previous marketing campaign 
+- **STATUS** (string): Status in the current campaign. 
+                Subscribed: product subscribed by customer
+                Refused: product refused by customer
+                Waiting: waiting for feedback or action from the customer.
+                Absent: customer has not picked up after multiple solicitations for this campaign.
      """)
 
-uploaded_file = st.file_uploader("Importez le fichier csv.", "csv")
 
-if uploaded_file:
-    dataset = load_datas(uploaded_file, encoding="UTF-8")
-    st.write(dataset)
+st.header("**📊 Data Visualization**")
+st.write("Explore the dataset and discover insightful correlations between the variables.")
+
+st.subheader("**Statistics**")
+st.write("In this section, you can access a range of statistical insights for the variables, including metrics like the mean and standard deviation.")
 
 
-st.header("**Data Visualisation** 🔎")
-st.write("Vous pouvez visualiser les données et les corrélations entre elles ici. Chargez le dataset pour utiliser cette partie.")
+col1, _ , col3 = st.columns([3, 1, 3])
 
-st.subheader("**Statistiques**")
-st.write("Ici, vous pouvez voir certaines statistiques des variables, comme la moyenne ou l'écart-type.")
+numerical_cols, categorical_cols = find_numerical_categorical_cols(dataset)
 
-if  uploaded_file:
-    col1, _ , col3 = st.columns([3, 1, 3])
-
-    numerical_cols, categorical_cols = find_numerical_categorical_cols(dataset)
-
-    feature_selected = col1.selectbox("Nom de la variable", [None] + numerical_cols)
-    if feature_selected:
-        col3.write("Description de la variable")
-        col3.write(dataset[feature_selected].describe())
+feature_selected = col1.selectbox("Variable name", [None] + numerical_cols)
+if feature_selected:
+    col3.write("Description of the variable")
+    col3.write(dataset[feature_selected].describe())
 
 
 
-st.subheader("**Graphiques**")
-st.write("Vous pouvez visualiser les données et les corrélations entre elles ici. Chargez le dataset pour utiliser cette partie.")
+st.subheader("**Plots**")
+st.write("Explore the dataset and discover insightful correlations between the variables.")
 
-if uploaded_file:
-    distribution_plot(dataset)
-    scatter_features(dataset)
-    donut(dataset)
-    time_series(dataset)
-    #heatmap(dataset)
+distribution_plot(dataset)
+scatter_features(dataset)
+donut(dataset)
+time_series(dataset)
+#heatmap(dataset)
 
 
-st.sidebar.image("ss_logo.png")
+st.sidebar.header("Creating the prediction model")
 
-st.sidebar.header("Création du modèle de prédiction")
-
-side_expander_split = st.sidebar.expander("Split du dataset", expanded=False)
-test_size = side_expander_split.slider("taille du dataset de test (%)", 0, 100, 20)
+side_expander_split = st.sidebar.expander("Dataset split", expanded=False)
+test_size = side_expander_split.slider("test dataset size (%)", 0, 100, 20)
 
 models = {
     "Logistic regression":lr_param_selector,
@@ -130,35 +122,29 @@ models = {
     "Xtreme Gradient Boosting":xgb_param_selector,
 }
 
-side_expander_train = st.sidebar.expander("Entrainez un modèle", expanded=True)
-model_selected = side_expander_train.selectbox("Choisissez un moodèle", models.keys())
+side_expander_train = st.sidebar.expander("Train model", expanded=True)
+model_selected = side_expander_train.selectbox("Choose a model", models.keys())
 
-side_expender_tune = st.sidebar.expander("Modifiez les hyperparamètres", expanded=True)
+side_expender_tune = st.sidebar.expander("Modify hyperparameters", expanded=True)
 with side_expender_tune:
     model = models[model_selected](RANDOM_SEED)
 
-button = st.sidebar.button("Démarrez l'entrainement")
+button = st.sidebar.button("Start training")
 
-
-### Split en X et y et scale les données si le dataset a été uploadé
-if uploaded_file:
-    X, y = seperate_X_y(dataset)
-    X_train, X_test, y_train, y_test = split_dataset(X, y, test_size/100, RANDOM_SEED)
-    X_train_scaled, X_test_scaled = scaling(X_train, X_test)
-
-
-### Bas de page
+X, y = seperate_X_y(dataset)
+X_train, X_test, y_train, y_test = split_dataset(X, y, test_size/100, RANDOM_SEED)
+X_train_scaled, X_test_scaled = scaling(X_train, X_test)
 
 
 
 
+st.header("**✅ Model validation** ")
+st.write("You must first create a template in the left-hand menu.")
 
-st.header("**Validation du modèle** ✔️")
-st.write("Vous devez d'abord créer un modèle dans le menu de gauche.")
-
-if (uploaded_file) and button:#Executer les fonctions si le dataset a été uploadé et que le bouton a été activé
-    model = create_model(model, X_train_scaled, y_train)
-    y_pred = model.predict(X_test_scaled)
+if  button:
+    with st.spinner('Training...'):
+        model = create_model(model, X_train_scaled, y_train)
+        y_pred = model.predict(X_test_scaled)
     model_report(y_test, y_pred)
 
     col1, col3 = st.columns(2)
