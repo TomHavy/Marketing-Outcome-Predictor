@@ -10,7 +10,7 @@ The **Deposit Subscription Predictor** is a data science and machine learning pr
 
 - **Jupyter Notebook**: Dive deep into our data analysis and model development process. This notebook provides valuable insights for data scientists and enthusiasts interested in the project's intricacies.
 
-  ![gif_demo_notebook_Deposit_Subscription_Predictor](https://github.com/TomHavy/MarketingOutcomePredict/assets/67765175/d4922216-b171-4587-b119-5a59761a3b7d)
+![gif_demo_notebook_Deposit_Subscription_Predictor](https://github.com/TomHavy/MarketingOutcomePredict/assets/67765175/d4922216-b171-4587-b119-5a59761a3b7d)
 
 
 - **Interactive Streamlit App**: Experience the power of our predictive model through an interactive web application. This user-friendly tool offers real-time predictions and serves as a prototype for potential integration into the bank's marketing operations.
