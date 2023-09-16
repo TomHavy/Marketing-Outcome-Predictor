@@ -13,7 +13,7 @@ st.cache_data
 def distribution_plot(dataset):
     st.write('**Distribution des variables**')
 
-    open = st.checkbox("Affichez", key=2)
+    open = st.checkbox("Display", key=2)
 
     if open: 
 
@@ -31,7 +31,7 @@ st.cache_data
 def scatter_features(dataset):
     st.write('**Scatterplot**')
 
-    open = st.checkbox("Affichez", key=4)
+    open = st.checkbox("Display", key=4)
 
     if open:
         selected_x_var = st.selectbox('Choisissez la variable x', dataset.columns)
@@ -54,7 +54,7 @@ def donut(dataset):
 
     st.write('**Pie chart**')
 
-    open = st.checkbox("Affichez", key=5)
+    open = st.checkbox("Display", key=5)
     if open:
         select_donut = st.selectbox('Choisissez une variable à afficher', cols_sub)
 
@@ -70,7 +70,7 @@ def time_series(dataset):
 
     st.write('**Time series**')
 
-    open = st.checkbox("Affichez", key=6)
+    open = st.checkbox("Display", key=6)
     if open:
         select = st.selectbox('Choisissez un indicateur économique à comparer?', socio_eco_col)
         
