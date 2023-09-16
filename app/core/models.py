@@ -16,3 +16,13 @@ def dt_param_selector(seed):
 
     model = DecisionTreeClassifier(**params)
     return model
+
+import streamlit as st
+from sklearn.linear_model import LogisticRegression
+
+def lr_param_selector(seed):
+    params = {
+
+    }
+    model = LogisticRegression(**params)
+    return model
