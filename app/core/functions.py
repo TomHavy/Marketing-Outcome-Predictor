@@ -82,6 +82,7 @@ def scaling(X_train,X_test):
     return X_train_scaled,X_test_scaled
 
 def create_model(model, X_train, y_train):
+    y_train = y_train.astype(int)
     model = model.fit(X_train, y_train)
     return model
 
@@ -115,10 +116,11 @@ def _plot_confusion_matrix(y_test,y_pred):
     st.plotly_chart(fig)
 
 def model_report(y_test, y_pred):
+    y_test = y_test.astype(int)
     st.write("Accuracy:", accuracy_score(y_test,y_pred))
-    st.write("Precision:", precision_score(y_test,y_pred ,pos_label='1',average='binary'))
-    st.write("Recall:", recall_score(y_test,y_pred ,pos_label='1',average='binary'))
-    st.write("F1 score:", f1_score(y_test,y_pred ,pos_label='1',average='binary'))
+    st.write("Precision:", precision_score(y_test,y_pred ,pos_label=  1,average='binary'))
+    st.write("Recall:", recall_score(y_test,y_pred ,pos_label=1,average='binary'))
+    st.write("F1 score:", f1_score(y_test,y_pred ,pos_label=1,average='binary'))
 
     _plot_confusion_matrix(y_test,y_pred)
     
