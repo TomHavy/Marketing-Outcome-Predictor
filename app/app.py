@@ -22,13 +22,13 @@ from core.functions import(
     seperate_X_y,    
 )
 
+
 st.set_page_config(page_title="Deposit Subscription Predictor", layout="wide", page_icon='🤖')
 
 st.markdown(""" <style>
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 </style> """, unsafe_allow_html=True)
-
 
 hide_streamlit_style = """
 <style>

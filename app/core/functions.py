@@ -10,6 +10,7 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import recall_score,confusion_matrix,f1_score,accuracy_score,precision_score
 
+
 def load_datas(path, encoding):
     dataset = pd.read_csv(path, encoding=encoding)
     return dataset
@@ -18,8 +19,6 @@ long_col=["job","relation","Month_year","idx_prix_conso","idx_conf_conso","date"
 socio_eco_col=["tx_var_emploi",	"idx_prix_conso",	"idx_conf_conso"]
 
 def find_numerical_categorical_cols(dataset):
-    #numerical_cols = [col for col in dataset.columns if dataset[col].dtype == float or dataset[col].dtype == int]
-    #categorical_cols = [col for col in dataset.columns if dataset[col].dtype != float] #(object, int, str)]
 
     numerical_cols=["age","balance","nb_j_dernier_contact","nb_contact_derniere_campagne","idx_prix_conso","idx_conf_conso", "tx_var_emploi"]
     categorical_cols=['job','relation','education','defaut','pret_immo','pret_perso','duree_contact','nb_contact','resultat_derniere_campagne',"Month",'statut','Month_year','date','Year','age_group']

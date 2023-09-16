@@ -1,6 +1,4 @@
 import streamlit as st
-import numpy as np
-
 import plotly.express as px
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -38,11 +36,6 @@ def scatter_features(dataset):
         selected_y_var = st.selectbox('Choose y variable', dataset.columns, index= len(dataset.columns)-1)
         fig = px.scatter(dataset, x = dataset[selected_x_var], y = dataset[selected_y_var])
         st.plotly_chart(fig, use_container_width=True)
-
-# def pred(dataset):
-#     click = st.checkbox("Inquiez le numéro du client", key=5)
-#     if click:
-        
 
 st.cache_data
 def donut(dataset):
