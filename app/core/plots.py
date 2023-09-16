@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 long_col=["job","relation","Month_year","idx_prix_conso","idx_conf_conso","date"]
 socio_eco_col=["tx_var_emploi",	"idx_prix_conso",	"idx_conf_conso"]        
 
+st.cache_data
 def distribution_plot(dataset):
     st.write('**Distribution des variables**')
 
@@ -25,6 +26,8 @@ def distribution_plot(dataset):
 
         st.plotly_chart(fig, use_container_width=True)
 
+
+st.cache_data
 def scatter_features(dataset):
     st.write('**Scatterplot**')
 
@@ -41,6 +44,7 @@ def scatter_features(dataset):
 #     if click:
         
 
+st.cache_data
 def donut(dataset):
 
     souscrit= dataset[dataset['statut'] == 'Souscrit']
@@ -59,6 +63,7 @@ def donut(dataset):
         fig = px.pie(counts_cols_sub, values=counts_cols_sub,names=counts_cols_sub.index,hole=.5)
         st.plotly_chart(fig, use_container_width=True)
 
+st.cache_data
 def time_series(dataset):
 
     subscribers_per_month = dataset[dataset['statut'] == 'Souscrit'].groupby(['Month_year'])['statut'].count()
@@ -80,6 +85,7 @@ def time_series(dataset):
             fig2=px.line(dataset, x='date', y=select)
             st.plotly_chart(fig2)
 
+st.cache_data
 # def heatmap(dataset):
 #     numerical_cols, categorical_cols = find_numerical_categorical_cols(dataset)
 
