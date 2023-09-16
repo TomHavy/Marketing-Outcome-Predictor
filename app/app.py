@@ -29,7 +29,14 @@ st.markdown(""" <style>
 footer {visibility: hidden;}
 </style> """, unsafe_allow_html=True)
 
-RANDOM_SEED = 1
+
+hide_streamlit_style = """
+<style>
+    #root > div:nth-child(1) > div > div > div > div > section > div {padding-top: 0rem;}
+</style>
+
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 st.title("**Deposit Subscription Predictor** ")
 
@@ -88,7 +95,6 @@ st.write("Explore the dataset and discover insightful correlations between the v
 st.subheader("**Statistics**")
 st.write("In this section, you can access a range of statistical insights for the variables, including metrics like the mean and standard deviation.")
 
-
 col1, _ , col3 = st.columns([3, 1, 3])
 
 numerical_cols, categorical_cols = find_numerical_categorical_cols(dataset)
@@ -98,8 +104,6 @@ if feature_selected:
     col3.write("Description of the variable")
     col3.write(dataset[feature_selected].describe())
 
-
-
 st.subheader("**Plots**")
 st.write("Explore the dataset and discover insightful correlations between the variables.")
 
@@ -108,7 +112,6 @@ scatter_features(dataset)
 donut(dataset)
 time_series(dataset)
 #heatmap(dataset)
-
 
 st.sidebar.header("Creating the prediction model")
 
@@ -124,6 +127,8 @@ models = {
 
 side_expander_train = st.sidebar.expander("Train model", expanded=True)
 model_selected = side_expander_train.selectbox("Choose a model", models.keys())
+
+RANDOM_SEED = 1
 
 side_expender_tune = st.sidebar.expander("Modify hyperparameters", expanded=True)
 with side_expender_tune:
