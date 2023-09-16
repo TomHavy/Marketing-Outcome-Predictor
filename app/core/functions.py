@@ -10,8 +10,8 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import recall_score,confusion_matrix,f1_score,accuracy_score,precision_score
 
-def load_datas(file, encoding):
-    dataset = pd.read_csv(file, encoding=encoding)
+def load_datas(path, encoding):
+    dataset = pd.read_csv(path, encoding=encoding)
     return dataset
 
 long_col=["job","relation","Month_year","idx_prix_conso","idx_conf_conso","date"]
@@ -35,6 +35,7 @@ def _imbalance(X,y):
 
     return X,y
 
+st.cache_data
 def seperate_X_y(dataset):
     X=dataset.drop(["date","Month_year","statut","duree_contact"],axis=1)
 
@@ -51,7 +52,7 @@ def seperate_X_y(dataset):
     
     return X, y
 
-
+st.cache_data
 def split_dataset(X, y, test_size, seed):
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=seed, test_size=test_size)
 
@@ -71,6 +72,7 @@ def split_dataset(X, y, test_size, seed):
 
     return X_train, X_test, y_train, y_test
 
+st.cache_data
 def scaling(X_train,X_test):
 
     min_max_scaler = MinMaxScaler()
@@ -83,6 +85,7 @@ def create_model(model, X_train, y_train):
     model = model.fit(X_train, y_train)
     return model
 
+st.cache_data
 def _plot_confusion_matrix(y_test,y_pred):
  
     fig = ff.create_annotated_heatmap(confusion_matrix(y_test, y_pred), x=["0","1"], y=["0","1"], colorscale='Viridis')
