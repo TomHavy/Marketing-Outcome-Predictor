@@ -1,5 +1,8 @@
 import streamlit as st
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
 
 def dt_param_selector(seed):
 
@@ -17,18 +20,12 @@ def dt_param_selector(seed):
     model = DecisionTreeClassifier(**params)
     return model
 
-import streamlit as st
-from sklearn.linear_model import LogisticRegression
-
 def lr_param_selector(seed):
     params = {
 
     }
     model = LogisticRegression(**params)
     return model
-
-import streamlit as st
-from sklearn.ensemble import RandomForestClassifier
 
 def rf_param_selector(seed):
 
@@ -49,9 +46,6 @@ def rf_param_selector(seed):
 
     model = RandomForestClassifier(**params)
     return model
-
-import streamlit as st
-from xgboost import XGBClassifier
 
 def xgb_param_selector(seed):
     n_estimators = st.number_input("n_estimators", 100, 1000, 100, 50)
