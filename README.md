@@ -26,8 +26,11 @@ The **Deposit Subscription Predictor** is a data science and machine learning pr
 
 The successful completion of this project represents a significant milestone in enhancing the bank's direct marketing efforts. By optimizing resource allocation, increasing conversion rates, and ultimately improving the overall return on investment (ROI), our work has the potential to revolutionize the bank's customer acquisition strategies.
 
+
 ### 📚 Access Project Artifacts
 
-All project artifacts, including the Jupyter notebook, Streamlit app, and PowerPoint presentation, are available on this repo. Before running any code, make sure you have installed all the necessary libraries listed in the requirements.txt. Now, you are ready to explore the journey of data-driven decision-making in the banking sector.
+All project artifacts, including the Jupyter Notebook, Streamlit app, and PowerPoint presentation, are available on this repo. Before running any code, make sure you have installed all the necessary libraries listed in the requirements.txt. Now, you are ready to explore the journey of data-driven decision-making in the banking sector.
+
+[**🔗 Contact**](https://www.linkedin.com/in/tom-havyarimana-057454194/)
 
 ---
