@@ -1,5 +1,11 @@
 import streamlit as st
 
+from core.plots import( 
+    distribution_plot,
+    scatter_features,
+    donut,
+    time_series,
+)
 from core.models import(
     rf_param_selector,
     dt_param_selector,
@@ -13,13 +19,7 @@ from core.functions import(
     create_model,
     scaling,
     split_dataset,
-    seperate_X_y,
-    
-    distribution_plot,
-    scatter_features,
-    donut,
-    time_series,
-    
+    seperate_X_y,    
 )
 
 st.set_page_config(page_title="Sopra Steria Project", layout="wide")
