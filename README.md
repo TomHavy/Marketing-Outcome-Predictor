@@ -9,13 +9,16 @@ The **Deposit Subscription Predictor** is a data science and machine learning pr
 ### 📊 Key Project Components
 
 - **Jupyter Notebook**: Dive deep into our data analysis and model development process. This notebook provides valuable insights for data scientists and enthusiasts interested in the project's intricacies.
-![gif_demo_notebook_Deposit_Subscription_Predictor](https://github.com/TomHavy/MarketingOutcomePredict/assets/67765175/d4922216-b171-4587-b119-5a59761a3b7d)
+
+  ![gif_demo_notebook_Deposit_Subscription_Predictor](https://github.com/TomHavy/MarketingOutcomePredict/assets/67765175/d4922216-b171-4587-b119-5a59761a3b7d)
 
 
 - **Interactive Streamlit App**: Experience the power of our predictive model through an interactive web application. This user-friendly tool offers real-time predictions and serves as a prototype for potential integration into the bank's marketing operations.
+  
 ![gif_demo_app_Deposit_Subscription_Predictor](https://github.com/TomHavy/MarketingOutcomePredict/assets/67765175/ed7e16d5-535e-45cd-b2ed-a9819ff78e7a)
 
 - **Insightful PowerPoint Presentation (pptx)**: Get a concise overview of our project's key aspects, including analysis findings, model performance, and its potential impact on the bank's marketing strategies. This presentation is ideal for stakeholders seeking a summary of our project outcomes.
+
 ![gif_demo_prez_pptx_Deposit_Subscription_Predictor](https://github.com/TomHavy/MarketingOutcomePredict/assets/67765175/3c2a2126-7af4-4bd2-b533-b64e138be73c)
 
 ### 🌟 Project Impact
